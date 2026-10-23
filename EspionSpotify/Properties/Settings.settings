@@ -101,6 +101,15 @@
     <Setting Name="settings_playlist_filename" Type="System.String" Scope="User">
       <Value Profile="(Default)">playlist.m3u8</Value>
     </Setting>
+    <Setting Name="settings_playlist_generation_enabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="settings_playlist_output_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="settings_playlist_filename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">playlist.m3u8</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
 
