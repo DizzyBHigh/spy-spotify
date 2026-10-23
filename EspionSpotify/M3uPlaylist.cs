@@ -17,7 +17,9 @@ namespace EspionSpotify
             if (string.IsNullOrWhiteSpace(filename) || Path.GetFileName(filename) != filename || filename.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0) throw new InvalidOperationException("Playlist filename is invalid.");
             if (!File.Exists(recordingPath)) throw new FileNotFoundException("Recording not found.", recordingPath);
             var playlist = Path.Combine(folder, filename);
-            var title = track == null ? Path.GetFileNameWithoutExtension(recordingPath) : track.ToString();
+            var title = track == null ? Path.GetFileNameWithoutExtension(recordingPath) : (string.IsNullOrWhiteSpace(track.Artists) ? track.Title : track.Artists + " - " + track.Title);
+            if (string.IsNullOrWhiteSpace(title)) title = Path.GetFileNameWithoutExtension(recordingPath);
+            title = title.Replace("\r", " ").Replace("\n", " ");
             lock (SyncRoot)
             {
                 var header = !File.Exists(playlist) || new FileInfo(playlist).Length == 0;
